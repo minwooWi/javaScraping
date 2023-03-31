@@ -21,24 +21,12 @@ Retrieves a list of horses belonging to a particular trainer and their medical h
 
 Example usage:
 
-perl
-Copy code
-http://localhost:8080/horseList?jo=Kim%20Jeong%20Kwan
+http://localhost:8080/horseList?jo=22조
 GET /trainers
 Retrieves the trainer number for a given trainer name. The endpoint accepts a query parameter trainerName, which is the name of the trainer.
 
 Example usage:
 
-perl
-Copy code
-http://localhost:8080/trainers?trainerName=Kim%20Jeong%20Kwan
-POST /horses
-Retrieves the list of horses belonging to a particular trainer. The endpoint accepts a request body containing the trNo parameter, which is the trainer number.
-
-Example usage:
-
-bash
-Copy code
 http://localhost:8080/horses
 Request body:
 

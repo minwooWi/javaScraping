@@ -12,11 +12,13 @@ import org.jsoup.select.Elements;
 import org.springframework.web.bind.annotation.*;
 import javax.net.ssl.*;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -243,8 +245,12 @@ public class sample {
         }
 
         // Set the response headers
+        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        String filename = date + "_" + jo +"_정치리스트.xlsx";
+        String encodedFilename = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
+
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        response.setHeader("Content-Disposition", "attachment; filename=example.xlsx");
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + encodedFilename + "\"");
 
         // Write the workbook to the response stream
         workbook.write(response.getOutputStream());
